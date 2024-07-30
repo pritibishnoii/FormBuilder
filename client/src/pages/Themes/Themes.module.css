@@ -8,18 +8,18 @@
 }
 .main{
     width: 100%;
-  
+
 }
 .light {
     background-color: #ffffff;
     color: #000000;
   }
-  
+
   .dark {
     background-color: #171923;
     color: #ffffff;
   }
-  
+
   .blue {
     background-color: #508C9B;
     color: #ffffff;
@@ -32,7 +32,7 @@
 
   .heading {
     padding: 10%;
-    border-bottom: 1px solid #474747; 
+    border-bottom: 1px solid #474747;
   }
   .heading h1 {
     font-size: 1.5rem;
@@ -40,15 +40,15 @@
   .themeOption {
       margin:8% 14%;
   }
-  
-  
+
+
   .themeOption h2 {
     margin: 0;
   }
   .themeOption img {
       cursor: pointer;
   }
-  
+
   .chatBg{
     width:60%;
     margin: 3% auto;
@@ -81,5 +81,8 @@
     top: 9%;
     z-index: 1;
   }
-  
-  
+
+  .border{
+    border: 5px solid  #1A5FFF;
+    border-radius: 10px;
+  }
