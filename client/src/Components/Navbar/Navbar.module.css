@@ -35,9 +35,10 @@
 }
 /* buttons css  */
 .bgPrimary {
-  background-color: #007bff;
+  background-color: #1A5FFF;
   color: #fff;
   border: none;
+  padding: 1rem 1rem;
 }
 .transparentBtn {
   background: transparent;

@@ -25,10 +25,10 @@ function Footer() {
 
       <div className={styles.footContent}>
         <div className={styles.img1}>
-          <img src={footbg1} alt="" />
+          <img src={footbg1} alt="footerimg" />
         </div>
         <div className={styles.img2}>
-          <img src={footbg2} alt="" />
+          <img src={footbg2} alt="footerimg" />
         </div>
         <div className={`flex flex-col items-center ${styles.footSec}`}>
           <h1 className={`outfit-font text-white text-center`}>Improve conversion and user engagement<br></br>
