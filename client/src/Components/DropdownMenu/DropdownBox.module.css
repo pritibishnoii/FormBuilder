@@ -1,0 +1,125 @@
+
+  .folder-drop-down {
+    padding-top: 20px;
+  }
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+    width: 50%;
+    z-index: 1;
+  }
+  
+  .dropdownSelect {
+    width: 40%;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: 1px solid #6d6d6d;
+    border-radius: 4px;
+    cursor: pointer;
+    /* z-index: 1; */
+    background-color: #18181b;
+    /* box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2); */
+  }
+  
+  .dropdownSelect .arrow {
+    margin-left: 10px;
+  }
+  
+  .dropdown .listItem {
+    width: 40%;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #18181b;
+  
+  
+    border-radius: 4px;
+    overflow: hidden;
+    /* border: 1px solid  #6d6d6d; */
+  }
+  
+  .settings,
+  .logOut {
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    background: none;
+    border: none;
+    width: 100%;
+  
+    cursor: pointer;
+    border: 1px solid #6d6d6d;
+  }
+  .logOut {
+    border-top: none;
+    color: #ffa54c;
+    font-size: 15px;
+  }
+  
+  .settings {
+    border-top: none;
+  }
+  
+  .createFolder {
+    /* background-color: #FFFFFF14; */
+    width: 86%;
+    /* margin: 3% auto; */
+    margin-left: 10%;
+    margin-top: 3%;
+  }
+  .folderBox {
+    /* background-color:  #6d6d6d; */
+    background-color: #ffffff14;
+    width: 170px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin: 0px 12px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  .createIcon {
+    width: 29px;
+  }
+  .popupFolder {
+    width: 500px;
+    height: 250px;
+    /* background-color: #3f3d3d; */
+    background: transparent;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    border-radius: 30px;
+    margin: 3% auto;
+    padding: 12px;
+    border: 1px solid #6d6d6d;
+  }
+  .popup-buttons {
+    width: 80%;
+    margin: 7% auto;
+  }
+  .doneBtn,
+  .cancleBtn {
+    border: none;
+    width: 100px;
+    background: transparent;
+    margin: auto;
+    padding: 14px 22px;
+    font-size: 1.7rem;
+    cursor: pointer;
+  }
+  .doneBtn {
+    color: #4b83ff;
+  }  
+  .folderItem {
+    background-color: #ffffff14;
+    width: 170px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin: 0px 12px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  

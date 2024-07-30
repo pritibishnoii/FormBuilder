@@ -1,0 +1,45 @@
+.footContent {
+  position: relative;
+  width: 100vw;
+  height: 600px;
+  margin-top: 8%;
+  padding-top: 12px;
+  z-index: -1;
+}
+
+.img1 {
+  position: absolute;
+  /* background-color: orange; */
+  left: 0;
+}
+.img1 img,
+.img2 img {
+  width: 80%;
+}
+.img2 {
+  position: absolute;
+  right: 0;
+  bottom: 5%;
+}
+/* style={{width:'60%',margin:'0 auto  0' }} */
+
+.footSec {
+  width: 50%;
+  margin: auto;
+  margin-top: 20%;
+}
+
+.footer {
+  margin-top: 8%;
+  width: 100vw;
+  background-color: #0f0f18;
+  height: 40vh;
+  gap: 8%;
+  padding-top: 12px;
+}
+.col1 p,
+.col2 p,
+.col3 p,
+.col4 p {
+  text-decoration: underline;
+}

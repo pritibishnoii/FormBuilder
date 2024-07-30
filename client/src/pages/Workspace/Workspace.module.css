@@ -1,0 +1,118 @@
+.container {
+  width: 100%;
+  height: 100%;
+  background-color: #27272a;
+}
+.main{
+    display: flex;
+}
+.sideBar {
+  background-color: #1f1f23;
+  width: 300px;
+  border-bottom: 2px solid #464646;
+  padding: 24px;
+  height: 100vh;
+  margin: 12px;
+  border: 1px solid #464646;
+  border-radius: 8px;
+}
+.startImg {
+  position: absolute;
+  right: 30%;
+  top: 20%;
+  color: #ffffff;
+  background-color: #18181b;
+  width: 240px;
+  padding: 12px;
+  border-radius: 8px;
+  gap: 12px;
+}
+.headings {
+  font-size: 16px;
+}
+.sectionContainer {
+  margin-top: 5%;
+}
+.Container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+.box {
+  /* 27272A */
+  display: flex;
+  background-color: #27272a;
+  padding: 1px;
+  border-radius: 8px;
+  margin-top: 8px;
+  align-items: center;
+  cursor: pointer;
+  border: none;
+  color: #ffffff;
+  font-family: "Open Sans";
+}
+.box img {
+  margin: 12px;
+}
+
+.bubblesBox{
+    width: 340px;
+    height: 130px;
+    background-color: #18181B;
+    padding: 16px 18px;
+    border-radius: 10px;
+    position: absolute;
+    left: 50%;
+    top: 32%;
+   
+
+}
+.text{
+    color: #FFF;
+    font-size: 1.2rem;
+    font-family: "Open Sans";
+}
+.inputBox{
+    background-color: #1F1F23;
+    padding: 10px;
+    margin: 8px;
+    display: flex;
+    gap: 12px;
+    border-radius: 5px;
+    
+}
+.inputBox input{
+    width: 100%;
+    padding: 4px;
+    background: transparent;
+    outline: none;
+    border: none;
+    font-size: 1rem;
+    font-family: "Open Sans";
+    color: #FFF;
+    
+}
+.inputBox input::placeholder{
+    color: #848484;
+}
+.error{
+    border: 1px solid #F55050;
+}
+.delIcon{
+    position: absolute;
+    right: -2%;
+    top: -12%;
+    cursor: pointer;
+}
+.errorText{
+    color: #F55050;
+    font-family: "Open Sans";
+    position: absolute;
+    bottom: 5px;
+    left: 25px;
+    font-size: 12px;
+
+}
+.displayNone{
+display: none;
+}

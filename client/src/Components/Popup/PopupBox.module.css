@@ -1,0 +1,61 @@
+  .popupBoxes{
+    z-index: 12;
+    position: absolute;
+    /* background-color: orange; */
+    top: 26%;
+    left: 28%;
+    background-color: #18181b;
+
+  }
+  .folderInput {
+    width: 85%;
+    outline: none;
+    background-color: #1f1f23;
+    border: none;
+    padding: 18px 10px;
+    border-radius: 12px;
+    margin: auto;
+    font-size: 1rem;
+  }
+  .folderInput::placeholder {
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+  }
+  .folderHeading {
+    font-size: 1.6rem;
+    font-weight: 400;
+    margin: 18px;
+  }
+  .popupFolder {
+    width: 430px;
+    height: 230px;
+    /* background-color: #3f3d3d; */
+    background: transparent;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    border-radius: 30px;
+    margin: 3% auto;
+    padding: 12px;
+    border: 1px solid #6d6d6d;
+    z-index: 10;
+  }
+  .popup-buttons {
+    width: 80%;
+    margin: 7% auto;
+  }
+  .doneBtn,
+  .cancleBtn {
+    border: none;
+    width: 100px;
+    background: transparent;
+    margin: auto;
+    padding: 14px 22px;
+    font-size: 1.7rem;
+    cursor: pointer;
+  }
+  .doneBtn {
+    color: #4b83ff;
+  }
+  
+
+  

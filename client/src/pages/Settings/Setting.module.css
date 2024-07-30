@@ -1,0 +1,90 @@
+/*Settings Page Css*/
+
+.settings-page{
+    background-color: #1E1E1E;
+    height: 100vh;
+    width: 100vw;
+}
+.backArrow{
+    position: absolute;
+    top: 7%;
+    left: 4%;
+
+}
+.settings-title{ 
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-top: 3%;
+}
+.form{
+    margin-top: 4%;
+    width: 30%;
+}
+.eyeicon{
+    color: #555151;
+   font-size: 1.5rem;
+  
+}
+.input-div{
+    width: 100%;
+    border-radius: 11px;
+    border: 1px solid #D0D0D0;
+    background-color: transparent;
+    outline: none;
+    padding: 8px 12px;
+    margin-bottom: 22px;
+}
+.input-div > img:first-child {
+    width: 1.8rem;
+}
+
+.input-box{
+    width: 100%;
+    border-radius: 11px;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    padding-left: 10px;
+    font-size: 20px;  
+}
+
+.input-box::placeholder{
+    font-size: 1rem;
+}
+.update-button{
+    width: 100%;
+    border-radius: 55px;
+    background-color: #1A5FFF;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 12px;
+  
+}
+
+.input-div>img:last-child{
+    cursor: pointer;
+    width: 1.6rem;
+}
+
+.logout-box{
+    display: flex;
+    align-items: start;
+    position: absolute;
+    bottom: 5%;
+    padding-left: 6%;
+    gap: 10px;
+    width: -webkit-fill-available;
+    cursor: pointer;
+}
+
+.logout-text{
+    outline: none;
+    background: transparent;
+    border: none;
+    font-size: 16px;
+    color: #CF3636;
+    font-weight:500;
+    font-family: "Poppins", sans-serif;
+    cursor: pointer;
+}

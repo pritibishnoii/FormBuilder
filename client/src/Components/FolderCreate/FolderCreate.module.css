@@ -1,0 +1,56 @@
+
+.container{
+  width: 100vw;
+  /* height: 100vh; */
+  /* background-color: #5a5abd; */
+  /* background-color: #18181b; */
+
+}
+
+.createFolder {
+  width: 80%;
+  margin: 0 auto;
+  /* margin-left: 10%; */
+  margin-top: 3%;
+
+ 
+
+}
+.folderBox {
+  /* background-color:  #6d6d6d; */
+  background-color: #ffffff14;
+  width: 170px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  margin: 0px 12px;
+  cursor: pointer;
+  font-size: 1rem;
+  outline: none;
+}
+.folderHeading {
+  font-size: 1.6rem;
+  font-weight: 400;
+  margin: 18px;
+}
+.folderList {
+  width: 70%;
+  display: flex;
+  position: absolute;
+  align-items: center;
+  /* background-color: orange; */
+  top: 18%;
+  left: 26%;
+  flex-wrap: wrap;
+}
+
+.folderItem {
+  background-color: #ffffff14;
+  /* width: 20%; */
+  padding:10px;
+  border: none;
+  border-radius: 5px;
+  margin: 0px 12px;
+  cursor: pointer;
+  font-size: .9rem;
+}
