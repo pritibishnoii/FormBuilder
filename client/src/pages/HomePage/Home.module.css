@@ -7,9 +7,9 @@
   min-height: 100vh;
   padding: 1rem;
   box-sizing: border-box;
-  margin-top: 6%;
+  margin-top: 85px;
   background-color: #1E293B;
- 
+
 }
 .centered-content {
   width: 100vw;
@@ -59,7 +59,7 @@
 .centerDiv{
     width: 60%;
     margin-top: 12%;
-   
+
 
 }
 

@@ -1,6 +1,6 @@
 
 .container{
-  width: 100%;
+  width: 100vh;
   /* height: 100vh; */
   /* background-color: #5a5abd; */
   /* background-color: #18181b; */
@@ -12,8 +12,8 @@
   /* margin: 3% auto; */
   margin-left: 10%;
   margin-top: 6px;
-  
-  
+
+
 
 }
 
@@ -46,7 +46,7 @@
   border-radius: 8px;
   gap: 12px;
   position: relative;
-  
+
 }
 .formName {
   font-size: 18px;

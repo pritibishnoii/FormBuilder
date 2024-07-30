@@ -14,37 +14,37 @@
 
    /*🌻🌻🌻🌻 Medium font sizes🌻🌻🌻🌻🌻 */
    --font-size-md: 20px;
-   --font-size-ml: 22px; 
-   --font-size-ml2: 25px; 
+   --font-size-ml: 22px;
+   --font-size-ml2: 25px;
    --font-size-ml3: 27.33px;
    --font-size-ml4: 36px;
- 
+
    /* 💮💮💮💮💮Large-font-sizes💮💮💮💮💮💮 */
    --font-size-lg: 60px;
-   --font-size-xl: 72px; 
- 
+   --font-size-xl: 72px;
+
    /* 🌞🌞🌞🌞🌞Special font sizes 🌞🌞🌞🌞🌞 */
    --font-size-special-1: 19.2px; /* Special Font Size 1 */
    --font-size-special-2: 20px; /* Special Font Size 2 */
- 
+
    /*   💚💚💚💚💚💚 colors  💚💚💚💚💚💚*/
-   --color-white: #ffffff; 
+   --color-white: #ffffff;
    --color-light-grey: #A0AEC0;
    --color-dark-grey: #718096;
-   --color-red: #ff4141; 
-   --color-dark-red: #522224; 
+   --color-red: #ff4141;
+   --color-dark-red: #522224;
    --color-very-dark-grey: #1a1a1a;
    --color-medium-red: #cf3636;
-   --color-dark: #1E1E1E; 
-   
-  
+   --color-dark: #1E1E1E;
+
+
    /* 💛💛💛💛💛💛Font-weights💛💛💛💛💛💛 */
    --font-weight-regular: 400;
    --font-weight-medium: 500;
    --font-weight-semibold: 600;
    --font-weight-bold: 700;
    --font-weight-extrabold: 800;
- 
+
    /* 💛💛💛💛💛💛Line-Heights💛💛💛💛💛💛 */
    --line-height-small: 21.6px;
    --line-height-medium: 24px;
@@ -75,7 +75,8 @@ body {
   justify-content: center;
   align-items: center;
   /* background-color: #1E293B; */
- 
+      overflow-x: hidden;
+
 }
 
 
@@ -105,7 +106,7 @@ body {
   justify-content: space-between;
 }
 .flex-start{
-  align-items: flex-start; 
+  align-items: flex-start;
 }
 
 .bg-black{
