@@ -11,6 +11,7 @@
   position: absolute;
   /* background-color: orange; */
   left: 0;
+
 }
 .img1 img,
 .img2 img {
@@ -36,6 +37,7 @@
   height: 40vh;
   gap: 8%;
   padding-top: 12px;
+
 }
 .col1 p,
 .col2 p,

@@ -8,6 +8,7 @@
   top: 0;
   left: 0;
   width: 80%;
+  z-index: 20;
 }
 
 .logoText {
