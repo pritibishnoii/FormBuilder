@@ -1,18 +1,16 @@
 import axios from "axios";
 
-// const BACKEND_ORIGIN_URL = 'http://localhost:3000';
-const BACKEND_ORIGIN_URL = "https://server-j3x2.onrender.com";
+// const Backend_URL = 'http://localhost:3000';
+const Backend_URL = "https://server-j3x2.onrender.com";
 
 const createFolder = async (foldername, userId) => {
-  const token = localStorage.getItem("token"); // Retrieve token from local storage
-
+  const token = localStorage.getItem("token");
   if (!token) {
     throw new Error("No token found, please log in again.");
   }
-
   try {
     const response = await axios.post(
-      `${BACKEND_ORIGIN_URL}/folder/createfolder/${userId}`,
+      `${Backend_URL}/folder/createfolder/${userId}`,
       { foldername },
       {
         headers: {
@@ -32,14 +30,13 @@ const createFolder = async (foldername, userId) => {
 
 const deleteFolder = async (folderId) => {
   const token = localStorage.getItem("token");
-
   if (!token) {
     throw new Error("No token found, please log in again.");
   }
 
   try {
     const response = await axios.delete(
-      `${BACKEND_ORIGIN_URL}/folder/deletefolder/${folderId}`,
+      `${Backend_URL}/folder/deletefolder/${folderId}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,

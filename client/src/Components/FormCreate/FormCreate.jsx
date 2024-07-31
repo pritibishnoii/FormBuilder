@@ -43,7 +43,7 @@ function FormCreate() {
                             />
                             <button
                                 className={`${styles.formName} text-white sans-font`}
-                                onClick={() => navigate(`/workspace/${form.id}`)}
+                                onClick={() => navigate(`/workspace`)}
                             >
                                 {form}
                             </button>

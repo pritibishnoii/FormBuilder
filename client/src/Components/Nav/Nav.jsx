@@ -1,16 +1,16 @@
-import { useState } from 'react';
-import { useNavigate, useLocation, Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useNavigate, useLocation, Link, useParams } from 'react-router-dom';
 import styles from './Nav.module.css';
 import closeIcon from '../../assets/closeIcon.png';
+
 
 
 function Nav({ handelSave }) {
   const navigate = useNavigate();
   const location = useLocation();
+  const { formId } = useParams();
   const [selected, setSelected] = useState(location.pathname);
-  console.log(selected)
-
-
+  console.log(formId)
 
   return (
     <>
@@ -42,7 +42,7 @@ function Nav({ handelSave }) {
           </Link>
         </div>
         <div className={`${styles.btns} flex items-center`}>
-          <button className={`${styles.shareBtn} text-white sans-font`} >Share</button>
+          <button className={`${styles.shareBtn} text-white sans-font`} disabled >Share</button>
           <button className={`${styles.saveBtn} text-white sans-font`}
             onClick={handelSave}
           >Save</button>

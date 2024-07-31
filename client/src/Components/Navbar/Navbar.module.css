@@ -9,6 +9,7 @@
   left: 0;
   width: 80%;
   z-index: 20;
+
 }
 
 .logoText {
@@ -29,18 +30,19 @@
   font-size: 1rem;
   cursor: pointer;
   margin: 0.5rem;
-  margin-right: 2rem;
+  margin-right: 1rem;
   border-radius: 8px;
   outline: none;
   letter-spacing: 1px;
   font-weight: 400;
+  border: none;
 }
 
 /* buttons css  */
 .bgPrimary {
   background-color: #1A5FFF;
   color: #fff;
-  border: none;
+
 
 }
 
@@ -48,6 +50,5 @@
   background: transparent;
   color: #7ea6ff;
   border: 1px solid #7ea6ff;
-  padding: .7rem 1rem;
 
 }
