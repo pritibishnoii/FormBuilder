@@ -17,6 +17,7 @@
   text-decoration: none;
   font-family: "Outfit";
 }
+
 .navbarBrand {
   gap: 12px;
 }
@@ -24,25 +25,29 @@
 /* Common button styles */
 .button {
   font-family: "Open Sans";
-  padding: 0.5rem 1rem;
+  padding: .8rem 1rem;
   font-size: 1rem;
   cursor: pointer;
   margin: 0.5rem;
   margin-right: 2rem;
   border-radius: 8px;
-
+  outline: none;
   letter-spacing: 1px;
   font-weight: 400;
 }
+
 /* buttons css  */
 .bgPrimary {
   background-color: #1A5FFF;
   color: #fff;
   border: none;
-  padding: 1rem 1rem;
+
 }
+
 .transparentBtn {
   background: transparent;
   color: #7ea6ff;
   border: 1px solid #7ea6ff;
+  padding: .7rem 1rem;
+
 }
