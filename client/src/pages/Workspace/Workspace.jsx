@@ -54,7 +54,7 @@ function Workspace() {
       }
     });
     if (!hasError) {
-
+      // Save logic here
     }
   };
 
@@ -93,16 +93,18 @@ function Workspace() {
       case 'Video':
         return (
           <input
-            type="file"
-            accept="video/*"
+            type="text"
+            placeholder="Enter video URL"
+            value={inputValues[id] || ''}
             onChange={e => handleInputChange(e, id)}
           />
         );
       case 'GIF':
         return (
           <input
-            type="file"
-            accept="image/gif"
+            type="text"
+            placeholder="Enter GIF URL"
+            value={inputValues[id] || ''}
             onChange={e => handleInputChange(e, id)}
           />
         );

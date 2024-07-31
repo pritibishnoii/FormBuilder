@@ -20,6 +20,7 @@ import { ToastContainer, toast } from 'react-toastify';
 
 
 const PopupBox = () => {
+
     const popup = useSelector((state) => state.folder.popup)
     const deletePopup = useSelector((state) => state.folder.deletePopup)
     const formPopup = useSelector((state) => state.folder.formPopup)
@@ -165,4 +166,4 @@ const PopupBox = () => {
         </div>
     )
 }
-export default PopupBox 
+export default PopupBox
