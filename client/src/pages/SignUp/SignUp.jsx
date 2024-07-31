@@ -12,6 +12,7 @@ function SignUp() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [loading, setLoading] = useState(false)
     const [confirmPassword, setConfirmPassword] = useState('');
     const [validationErrors, setValidationErrors] = useState({});
     const navigate = useNavigate();
@@ -55,27 +56,34 @@ function SignUp() {
         setValidationErrors({});
 
         try {
+            setLoading(true)
             const response = await Register({ name, email, password });
             if (response.status === 201) {
+                setLoading(false)
                 const loginResponse = await Login({ email, password });
+
                 if (loginResponse.status === 200) {
                     const { data } = loginResponse;
                     const { token } = data;
                     localStorage.setItem('token', token);
                     toast.success("Registration successful!");
-                    navigate("/signin");
+                    setTimeout(() => {
+                        navigate("/signin");
+                    }, 2000);
+
                 }
             }
         } catch (error) {
-            console.log(error);
             if (error.response && error.response.status === 400) {
                 if (error.response.data.message === 'User already exists, please use another email address') {
+                    setLoading(false)
                     toast.error("User already exists, please use another email address.");
                 } else {
+                    setLoading(false)
                     toast.error("An error occurred. Please try again later.");
                 }
             } else {
-                console.error("Error during registration:", error);
+                setLoading(false)
                 toast.error("An error occurred. Please try again later.");
             }
         }
@@ -86,7 +94,7 @@ function SignUp() {
             <div className={styles.backArrow} onClick={() => window.history.back()}>
                 <img src={backArrow} alt="back" />
             </div>
-
+            <div className={`${loading ? 'loader' : ''} `}></div>
             <form onSubmit={handleRegister} className={`flex flex-col ${styles.form_w}`}>
                 <div className={` ${styles.inputGroup} `}>
                     <label>Username</label>

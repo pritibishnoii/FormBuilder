@@ -13,6 +13,7 @@ function SignIn() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState({});
+    const [loading, setLoading] = useState(false)
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
@@ -24,8 +25,10 @@ function SignIn() {
         if (name === 'email') {
             setEmail(value);
 
+
         } if (name === 'password') {
             setPassword(value);
+
         }
     };
 
@@ -51,23 +54,33 @@ function SignIn() {
 
         if (Object.keys(validationErrors).length === 0) {
             try {
+                setLoading(true)
                 const response = await Login({ email, password });
                 console.log(response);
 
                 if (response.status === 200) {
-                    console.log(response)
+                    setLoading(false)
                     toast.success('Login successful');
-                    console.log(setUserLogedIn({ email: response.data.userData.email }));
-                    dispatch(setUserLogedIn(response.data.userData));  //redux state update 
-                    localStorage.setItem("token", response.data.token);   //  token 
-                    localStorage.setItem("userData", JSON.stringify(response.data.userData)); //userName 
+                    setEmail('')
+                    setPassword('')
+                    setTimeout(() => {
 
-                    navigate('/dashbord');
+                        console.log(setUserLogedIn({ email: response.data.userData.email }));
+                        dispatch(setUserLogedIn(response.data.userData));
+                        navigate('/dashbord');
+                    }, 3000);
+                    //redux state update
+                    localStorage.setItem("token", response.data.token);   //  token
+                    localStorage.setItem("userData", JSON.stringify(response.data.userData)); //userName
+
+
                 } else {
+                    setLoading(false)
                     setErrors({ general: 'Password or Email are incorrect' });
                     toast.error('Password or Email are incorrect');
                 }
             } catch (error) {
+                setLoading(false)
                 console.error('Login error:', error);
                 setErrors({ general: 'Login failed due to a server error' });
                 toast.error('Login failed due to a server error');
@@ -79,12 +92,13 @@ function SignIn() {
 
     return (
         <>
-            <div className={`${styles.page} flex items-center justify-center`}>
+            <div className={`${styles.page} flex items-center justify-center    `}>
                 <ToastContainer />
 
                 <div className={styles.backArrow} onClick={() => window.history.back()}>
                     <img src={backArrow} alt="back" />
                 </div>
+                <div className={`${loading ? 'loader' : ''} `}></div>
 
                 <form onSubmit={loginHandler} className={`flex flex-col ${styles.form_w}`}>
                     <div className={styles.inputGroup}>
@@ -112,7 +126,8 @@ function SignIn() {
                         {errors.password && <span className={styles.errorMessage}>{errors.password}</span>}
                     </div>
                     <div>
-                        <button type="submit" className={styles.submitButton}>Log In</button>
+                        <button type="submit" className={`${styles.submitButton}  `}
+                        >Log In</button>
                         {errors.general && <span className={styles.errorMessage}>{errors.general}</span>}
                         <p className={styles.para}>
                             <span>Don't have an account? </span>

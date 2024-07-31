@@ -35,7 +35,7 @@ const DropdownMenu = () => {
                             <button
                                 onClick={() => {
                                     dispatch(logout());
-                                    navigate('/signup');
+                                    navigate('/signin');
                                 }}
                                 className={`${styles.logOut} sans-font`}>Log Out</button>
                         </div>

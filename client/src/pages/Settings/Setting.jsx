@@ -20,6 +20,7 @@ function Setting() {
     const [email, setEmail] = useState('');
     const [oldPassword, setOldPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
+    const [loading, setLoading] = useState(false)
 
     const [showOldPassword, setShowOldPassword] = useState(false);
     const [showNewPassword, setShowNewPassword] = useState(false);
@@ -30,11 +31,18 @@ function Setting() {
     const submitHandler = async (e) => {
         e.preventDefault();
         try {
+            setLoading(true)
             const response = await updateUser(name, email, newPassword, oldPassword, userID);
             // toast.success("User updated successfully!");
             console.log(response)
+            setLoading(false)
             toast.success("User updated successfully!!");
+            setEmail('')
+            setName('')
+            setNewPassword('')
+            setOldPassword('')
         } catch (error) {
+            setLoading(false)
             console.error("Error updating user:", error);
             toast.error(error.message || "Error updating user.");
         }
@@ -46,6 +54,7 @@ function Setting() {
                 <img src={backArrow} alt="back" />
             </div>
             <h1 className={`${styles["settings-title"]} text-white text-center sans-font`}>Settings</h1>
+            <div className={`${loading ? 'loader' : ''} `}></div>
             <form className={styles.form} onSubmit={submitHandler}>
                 <div className={`${styles['input-div']} flex items-center`}>
                     <img src={usericon} alt="userImg" />

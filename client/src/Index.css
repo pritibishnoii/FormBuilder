@@ -7,56 +7,61 @@
 
 :root {
   /* (Small) font-sizes 👇👇👇👇👇👇👇*/
-  --font-size-xxs: 14px; /* Extra Extra Small */
-  --font-size-xs: 16px; /* Extra Small */
-  --font-size-sm: 18px; /* Small */
+  --font-size-xxs: 14px;
+  /* Extra Extra Small */
+  --font-size-xs: 16px;
+  /* Extra Small */
+  --font-size-sm: 18px;
+  /* Small */
 
 
-   /*🌻🌻🌻🌻 Medium font sizes🌻🌻🌻🌻🌻 */
-   --font-size-md: 20px;
-   --font-size-ml: 22px;
-   --font-size-ml2: 25px;
-   --font-size-ml3: 27.33px;
-   --font-size-ml4: 36px;
+  /*🌻🌻🌻🌻 Medium font sizes🌻🌻🌻🌻🌻 */
+  --font-size-md: 20px;
+  --font-size-ml: 22px;
+  --font-size-ml2: 25px;
+  --font-size-ml3: 27.33px;
+  --font-size-ml4: 36px;
 
-   /* 💮💮💮💮💮Large-font-sizes💮💮💮💮💮💮 */
-   --font-size-lg: 60px;
-   --font-size-xl: 72px;
+  /* 💮💮💮💮💮Large-font-sizes💮💮💮💮💮💮 */
+  --font-size-lg: 60px;
+  --font-size-xl: 72px;
 
-   /* 🌞🌞🌞🌞🌞Special font sizes 🌞🌞🌞🌞🌞 */
-   --font-size-special-1: 19.2px; /* Special Font Size 1 */
-   --font-size-special-2: 20px; /* Special Font Size 2 */
+  /* 🌞🌞🌞🌞🌞Special font sizes 🌞🌞🌞🌞🌞 */
+  --font-size-special-1: 19.2px;
+  /* Special Font Size 1 */
+  --font-size-special-2: 20px;
+  /* Special Font Size 2 */
 
-   /*   💚💚💚💚💚💚 colors  💚💚💚💚💚💚*/
-   --color-white: #ffffff;
-   --color-light-grey: #A0AEC0;
-   --color-dark-grey: #718096;
-   --color-red: #ff4141;
-   --color-dark-red: #522224;
-   --color-very-dark-grey: #1a1a1a;
-   --color-medium-red: #cf3636;
-   --color-dark: #1E1E1E;
+  /*   💚💚💚💚💚💚 colors  💚💚💚💚💚💚*/
+  --color-white: #ffffff;
+  --color-light-grey: #A0AEC0;
+  --color-dark-grey: #718096;
+  --color-red: #ff4141;
+  --color-dark-red: #522224;
+  --color-very-dark-grey: #1a1a1a;
+  --color-medium-red: #cf3636;
+  --color-dark: #1E1E1E;
 
 
-   /* 💛💛💛💛💛💛Font-weights💛💛💛💛💛💛 */
-   --font-weight-regular: 400;
-   --font-weight-medium: 500;
-   --font-weight-semibold: 600;
-   --font-weight-bold: 700;
-   --font-weight-extrabold: 800;
+  /* 💛💛💛💛💛💛Font-weights💛💛💛💛💛💛 */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
 
-   /* 💛💛💛💛💛💛Line-Heights💛💛💛💛💛💛 */
-   --line-height-small: 21.6px;
-   --line-height-medium: 24px;
-   --line-height-large: 27px;
-   --line-height-xl: 30px;
-   --line-height-xxl: 43.2px;
-   --line-height-huge: 72px;
-   --line-height-tiny: 16.9px;
-   --line-height-base: 19.2px;
-   --line-height-big: 41px;
-   --line-height-custom-1: 26.2px;
-   --line-height-custom-2: 27.24px;
+  /* 💛💛💛💛💛💛Line-Heights💛💛💛💛💛💛 */
+  --line-height-small: 21.6px;
+  --line-height-medium: 24px;
+  --line-height-large: 27px;
+  --line-height-xl: 30px;
+  --line-height-xxl: 43.2px;
+  --line-height-huge: 72px;
+  --line-height-tiny: 16.9px;
+  --line-height-base: 19.2px;
+  --line-height-big: 41px;
+  --line-height-custom-1: 26.2px;
+  --line-height-custom-2: 27.24px;
 }
 
 
@@ -75,7 +80,7 @@ body {
   justify-content: center;
   align-items: center;
   /* background-color: #1E293B; */
-      overflow-x: hidden;
+  overflow-x: hidden;
 
 }
 
@@ -84,6 +89,7 @@ body {
 .w-screen {
   width: 100vw;
 }
+
 .h-screen {
   height: 100vh;
 }
@@ -93,40 +99,69 @@ body {
 .flex {
   display: flex;
 }
+
 .flex-col {
   flex-direction: column;
 }
+
 .items-center {
   align-items: center;
 }
+
 .justify-center {
   justify-content: center;
 }
+
 .justify-between {
   justify-content: space-between;
 }
-.flex-start{
+
+.flex-start {
   align-items: flex-start;
 }
 
-.bg-black{
+.bg-black {
   background-color: var(--color-dark);
 }
 
-.text-center{
+.text-center {
   text-align: center;
 }
 
-.sans-font{
+.sans-font {
   font-family: "Open Sans";
 }
 
-.outfit-font{
+.outfit-font {
   font-family: "Outfit", sans-serif;
 }
-.text-white{
+
+.text-white {
   color: var(--color-white);
 }
-.text-light-gray{
-color: var(--color-light-grey);
+
+.text-light-gray {
+  color: var(--color-light-grey);
+}
+
+
+/* HTML: <div class="loader"></div> */
+.loader {
+  width: 50px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background:
+    radial-gradient(farthest-side, #ffa516 94%, #0000) top/8px 8px no-repeat,
+    conic-gradient(#0000 30%, #ffa516);
+  -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 8px), #000 0);
+  animation: l13 1s infinite linear;
+  position: absolute;
+  top: 12%;
+  left: 48%;
+}
+
+@keyframes l13 {
+  100% {
+    transform: rotate(1turn)
+  }
 }
