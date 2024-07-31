@@ -6,31 +6,11 @@
 
 
 :root {
-  /* (Small) font-sizes 👇👇👇👇👇👇👇*/
-  --font-size-xxs: 14px;
-  /* Extra Extra Small */
-  --font-size-xs: 16px;
-  /* Extra Small */
-  --font-size-sm: 18px;
-  /* Small */
 
-
-  /*🌻🌻🌻🌻 Medium font sizes🌻🌻🌻🌻🌻 */
-  --font-size-md: 20px;
-  --font-size-ml: 22px;
-  --font-size-ml2: 25px;
-  --font-size-ml3: 27.33px;
-  --font-size-ml4: 36px;
 
   /* 💮💮💮💮💮Large-font-sizes💮💮💮💮💮💮 */
   --font-size-lg: 60px;
-  --font-size-xl: 72px;
 
-  /* 🌞🌞🌞🌞🌞Special font sizes 🌞🌞🌞🌞🌞 */
-  --font-size-special-1: 19.2px;
-  /* Special Font Size 1 */
-  --font-size-special-2: 20px;
-  /* Special Font Size 2 */
 
   /*   💚💚💚💚💚💚 colors  💚💚💚💚💚💚*/
   --color-white: #ffffff;
@@ -42,26 +22,6 @@
   --color-medium-red: #cf3636;
   --color-dark: #1E1E1E;
 
-
-  /* 💛💛💛💛💛💛Font-weights💛💛💛💛💛💛 */
-  --font-weight-regular: 400;
-  --font-weight-medium: 500;
-  --font-weight-semibold: 600;
-  --font-weight-bold: 700;
-  --font-weight-extrabold: 800;
-
-  /* 💛💛💛💛💛💛Line-Heights💛💛💛💛💛💛 */
-  --line-height-small: 21.6px;
-  --line-height-medium: 24px;
-  --line-height-large: 27px;
-  --line-height-xl: 30px;
-  --line-height-xxl: 43.2px;
-  --line-height-huge: 72px;
-  --line-height-tiny: 16.9px;
-  --line-height-base: 19.2px;
-  --line-height-big: 41px;
-  --line-height-custom-1: 26.2px;
-  --line-height-custom-2: 27.24px;
 }
 
 
@@ -143,6 +103,11 @@ body {
 .text-light-gray {
   color: var(--color-light-grey);
 }
+
+.text-larger {
+  font-size: var(--font-size-lg);
+}
+
 
 
 /* HTML: <div class="loader"></div> */

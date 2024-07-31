@@ -18,7 +18,7 @@ function Home() {
       <div className={`${styles.container} flex flex-col items-center justify-center flex-col`}>
         <Header />
         <div className={`${styles['centered-content']}  flex  flex-col items-center  items-center justify-center text-center `}>
-          <h1 className={`outfit-font text-white `}>Replace your old school forms<br /> with <br />chatbots</h1>
+          <h1 className={`outfit-font text-white text-larger `}>Replace your old school forms<br /> with <br />chatbots</h1>
           <p className={`sans-font text-light-gray`}>Typebot is a better way to ask for information. It leads to an increase in customer satisfaction and retention and multiply by<br /> 3 <br />your conversion rate compared to classical forms.</p>
         </div>
         <div>
@@ -60,7 +60,7 @@ function Home() {
 
 
         <div className={styles.toolSec}>
-          <img src={tools} alt="sec2" />
+          <img src={tools} alt="sec2" style={{ width: '100%' }} />
           <div style={{ width: '700px', marginLeft: '8%', marginTop: '3%' }}>
             <h1 className={`outfit-font text-white`}>Integrate with any platform</h1>
             <p className={`sans-font text-light-gray`}>Typebot offers several native integrations blocks as well as instructions on
@@ -71,7 +71,7 @@ function Home() {
 
 
         <div className={`${styles.centerDiv} flex flex-col justify-center items-center`}>
-          <h1 className='outfit-font text-white'>Collect results in real-time</h1>
+          <h1 className='outfit-font text-white  text-larger'>Collect results in real-time</h1>
           <p className='sans-font text-light-gray'>One of the main advantage of a chat application is that you collect the user's responses on each question.<br />
             <b className='flex justify-center' > You won't lose any valuable data.</b></p>
           <img src={chat} alt="chat" style={{ marginTop: '8%' }} />
