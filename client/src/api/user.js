@@ -54,12 +54,10 @@ const updateUser = async (
   }
 };
 
-const userDetails = async (id) => {
+const fetchResponses = async () => {
   try {
-    const userresponse = await axios.get(
-      `${Backend_URL}/user/userdetails/${id}`
-    );
-    return userresponse.data;
+    const response = await axios.get(`${Backend_URL}/responses`);
+    return response.data;
   } catch (error) {
     if (error.response && error.response.data) {
       throw new Error(error.response.data.message);
@@ -69,4 +67,4 @@ const userDetails = async (id) => {
   }
 };
 
-export { Register, Login, updateUser, userDetails };
+export { Register, Login, updateUser, fetchResponses };

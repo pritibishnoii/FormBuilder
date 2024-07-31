@@ -13,75 +13,156 @@ import phoneInputIcon from '../../assets/phone.png';
 import dateInputIcon from '../../assets/date.png';
 import ratingIcon from '../../assets/star.png';
 import buttonIcon from '../../assets/btnimg.png';
-import deleteIcon from '../../assets/deleteIcon.png'
+import deleteIcon from '../../assets/deleteIcon.png';
 
 import { useState } from 'react';
 
-
 const bubbleButtons = [
-  { id: 'bt', src: textImg, text: "Text" },
-  { id: 'bi', src: imageIcon, text: "Image" },
-  { id: 'bv', src: videoIcon, text: "Video" },
-  { id: 'bg', src: gifIcon, text: "GIF" }
+  { id: 'Text', src: textImg, text: "Text" },
+  { id: 'Image', src: imageIcon, text: "Image" },
+  { id: 'Video', src: videoIcon, text: "Video" },
+  { id: 'GIF', src: gifIcon, text: "GIF" }
 ];
 
 const inputButtons = [
-  { src: textInputIcon, text: "Text" },
-  { src: numberInputIcon, text: "Number" },
-  { src: emailInputIcon, text: "Email" },
-  { src: phoneInputIcon, text: "Phone" },
-  { src: dateInputIcon, text: "Date" },
-  { src: ratingIcon, text: "Rating" },
-  { src: buttonIcon, text: "Buttons" }
+  { id: 'Text', src: textInputIcon, text: "Text" },
+  { id: 'Number', src: numberInputIcon, text: "Number" },
+  { id: 'Email', src: emailInputIcon, text: "Email" },
+  { id: 'Phone', src: phoneInputIcon, text: "Phone" },
+  { id: 'Date', src: dateInputIcon, text: "Date" },
+  { id: 'Rating', src: ratingIcon, text: "Rating" },
+  { id: 'Buttons', src: buttonIcon, text: "Buttons" }
 ];
 
 function Workspace() {
+  const [openInputs, setOpenInputs] = useState([]);
+  const [error, setError] = useState({});
+  const [inputValues, setInputValues] = useState({});
 
-  const [openBubbleButtons, setOpenBubbleButtons] = useState([])
-  const [openInputButtons, setOpenInputButtons] = useState(false)
-  const [error, setError] = useState(false)
-  const [bubbleInput, setBubbleInput] = useState('')
-  const [textInput, setTextInput] = useState('')
-
-  const handleInput = (e) => {
+  const handleInputChange = (e, id) => {
     const { value } = e.target;
-    setBubbleInput(value);
-    if (value.trim() === '') {
-      setError(true);
-    } else {
-      setError(false);
-    }
-  };
-  const handelTextInput = (e) => {
-    const { value } = e.target
-    setTextInput(value)
-    if (value.trim() === '') {
-      setError(true);
-    } else {
-      setError(false);
-    }
-  }
-  const handelSave = () => {
-    if (bubbleInput.trim() === '' || textInput.trim() === '') {
-      setError(true);
-      setBubbleInput('');
-      setTextInput('')
-    }
-
-    else {
-      setError(false);
-      // Save logic here
-    }
-
+    setInputValues(prev => ({ ...prev, [id]: value }));
+    setError(prev => ({ ...prev, [id]: value.trim() === '' }));
   };
 
-  const handelBubbleButtons = (id) => {
-    // setOpenBubbleButtons()
-  }
+  const handleSave = () => {
+    let hasError = false;
+    Object.keys(inputValues).forEach(key => {
+      if (inputValues[key].trim() === '') {
+        setError(prev => ({ ...prev, [key]: true }));
+        hasError = true;
+      }
+    });
+    if (!hasError) {
+
+    }
+  };
+
+  const handleButtonClick = (id, type) => {
+    setOpenInputs(prev => [...prev, { id, type }]);
+  };
+
+  const handleDeleteInput = (id) => {
+    setOpenInputs(prev => prev.filter(input => input.id !== id));
+    setInputValues(prev => {
+      const newState = { ...prev };
+      delete newState[id];
+      return newState;
+    });
+  };
+
+  const renderInputBox = (type, id) => {
+    switch (type) {
+      case 'Text':
+        return (
+          <input
+            type="text"
+            placeholder="Click here to edit"
+            value={inputValues[id] || ''}
+            onChange={e => handleInputChange(e, id)}
+          />
+        );
+      case 'Image':
+        return (
+          <input
+            type="file"
+            accept="image/*"
+            onChange={e => handleInputChange(e, id)}
+          />
+        );
+      case 'Video':
+        return (
+          <input
+            type="file"
+            accept="video/*"
+            onChange={e => handleInputChange(e, id)}
+          />
+        );
+      case 'GIF':
+        return (
+          <input
+            type="file"
+            accept="image/gif"
+            onChange={e => handleInputChange(e, id)}
+          />
+        );
+      case 'Number':
+        return (
+          <input
+            type="number"
+            placeholder="Enter number"
+            value={inputValues[id] || ''}
+            onChange={e => handleInputChange(e, id)}
+          />
+        );
+      case 'Email':
+        return (
+          <input
+            type="email"
+            placeholder="Enter email"
+            value={inputValues[id] || ''}
+            onChange={e => handleInputChange(e, id)}
+          />
+        );
+      case 'Phone':
+        return (
+          <input
+            type="tel"
+            placeholder="Enter phone number"
+            value={inputValues[id] || ''}
+            onChange={e => handleInputChange(e, id)}
+          />
+        );
+      case 'Date':
+        return (
+          <input
+            type="date"
+            value={inputValues[id] || ''}
+            onChange={e => handleInputChange(e, id)}
+          />
+        );
+      case 'Rating':
+        return (
+          <input
+            type="range"
+            min="1"
+            max="5"
+            value={inputValues[id] || ''}
+            onChange={e => handleInputChange(e, id)}
+          />
+        );
+      case 'Buttons':
+        return (
+          <button onClick={() => alert('Button clicked!')}>Click me</button>
+        );
+      default:
+        return null;
+    }
+  };
 
   return (
     <div className={styles.container}>
-      <Nav handelSave={handelSave} />
+      <Nav handleSave={handleSave} />
 
       <div className={styles.main}>
         <div className={`${styles.startImg} sans-font flex`}>
@@ -91,9 +172,12 @@ function Workspace() {
           <div className={styles.sectionContainer}>
             <h1 className={styles.headings}>Bubbles</h1>
             <div className={styles.Container}>
-              {bubbleButtons.map((button, index) => (
-                <button className={styles.box} key={index} id={button.id}
-                  onClick={() => handelBubbleButtons(button.id)}
+              {bubbleButtons.map(button => (
+                <button
+                  className={styles.box}
+                  key={button.id}
+                  id={button.id}
+                  onClick={() => handleButtonClick(button.id, button.text)}
                 >
                   <img src={button.src} alt={button.text} /> {button.text}
                 </button>
@@ -103,9 +187,12 @@ function Workspace() {
           <div className={styles.sectionContainer}>
             <h1 className={styles.headings}>Inputs</h1>
             <div className={styles.Container}>
-              {inputButtons.map((button, index) => (
-                <button className={styles.box} key={index}
-                  onClick={() => setOpenInputButtons(true)}
+              {inputButtons.map(button => (
+                <button
+                  className={styles.box}
+                  key={button.id}
+                  id={button.id}
+                  onClick={() => handleButtonClick(button.id, button.text)}
                 >
                   <img src={button.src} alt={button.text} /> {button.text}
                 </button>
@@ -114,52 +201,25 @@ function Workspace() {
           </div>
         </div>
 
-
-        {
-          openBubbleButtons && (
-            <div className={styles.bubblesBox}>
-              <img src={deleteIcon} alt="delimg" onClick={() => setOpenBubbleButtons(false)}
-                className={styles.delIcon}
-              />
-              <span className={styles.text}>Text</span>
-              <div className={`${styles.inputBox} ${error ? styles.error : ''} `}>
-                <img src={textImg} alt="" />
-                <input
-                  type="text"
-                  placeholder='Click here to edit'
-                  value={bubbleInput}
-                  onChange={handleInput}
-                />
-                <span className={error ? styles.errorText : styles.displayNone} > Required Field</span>
-              </div>
+        {openInputs.map(({ id, type }, index) => (
+          <div className={styles.bubblesBox} key={index}>
+            <img
+              src={deleteIcon}
+              alt="Delete"
+              onClick={() => handleDeleteInput(id)}
+              className={styles.delIcon}
+            />
+            <span className={styles.text}>{type}</span>
+            <div className={`${styles.inputBox} ${error[id] ? styles.error : ''}`}>
+              {renderInputBox(type, id)}
+              <span className={error[id] ? styles.errorText : styles.displayNone}>
+                Required Field
+              </span>
             </div>
-          )
-        }
-        {
-          openInputButtons && (
-            <div className={styles.bubblesBox}>
-              <img src={deleteIcon} alt="del" onClick={() => setOpenInputButtons(false)}
-                className={styles.delIcon}
-              />
-              <span className={styles.text}>Text</span>
-              <div className={`${styles.inputBox} ${error ? styles.error : ''} `}>
-                <img src={textImg} alt="" />
-                <input
-                  type="text"
-                  placeholder='Click here to edit'
-                  value={textInput}
-                  onChange={handelTextInput}
-                />
-                <span className={error ? styles.errorText : styles.displayNone} > Required Field</span>
-              </div>
-            </div>
-          )
-        }
-
-
-
+          </div>
+        ))}
       </div>
-    </div >
+    </div>
   );
 }
 

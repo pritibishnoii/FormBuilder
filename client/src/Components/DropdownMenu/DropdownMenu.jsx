@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { logout } from '../../redux/Reducer/userSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import styles from './DropdownBox.module.css'
-import { useNavigate,Link } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 
 
@@ -35,7 +35,7 @@ const DropdownMenu = () => {
                             <button
                                 onClick={() => {
                                     dispatch(logout());
-                                    navigate('/');
+                                    navigate('/signup');
                                 }}
                                 className={`${styles.logOut} sans-font`}>Log Out</button>
                         </div>
@@ -46,4 +46,4 @@ const DropdownMenu = () => {
         </>
     )
 }
-export default DropdownMenu 
+export default DropdownMenu
