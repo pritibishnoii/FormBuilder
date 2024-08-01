@@ -1,10 +1,5 @@
-
-.container{
+.container {
   width: 100%;
-  /* background-color: #5a5abd; */
-  /* background-color: #18181b; */
-
-
 }
 
 .createFolder {
@@ -13,6 +8,7 @@
   /* margin-left: 10%; */
   margin-top: 28px;
 }
+
 .folderBox {
   /* background-color:  #6d6d6d; */
   background-color: #ffffff14;
@@ -26,11 +22,13 @@
   outline: none;
 
 }
+
 .folderHeading {
   font-size: 1.6rem;
   font-weight: 400;
   margin: 18px;
 }
+
 .folderList {
   width: 70%;
   display: flex;
@@ -45,7 +43,7 @@
 .folderItem {
   background-color: #ffffff14;
   /* width: 20%; */
-  padding:10px;
+  padding: 10px;
   border: none;
   border-radius: 5px;
   margin: 5px 12px;
