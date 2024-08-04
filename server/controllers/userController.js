@@ -28,7 +28,7 @@ const registerUser = async (req, res, next) => {
         email,
         password: hashedPassword,
       });
-      // 👇👇👇👇👇
+      // ***👇👇👇👇👇
       // console.log(`newUSer data --->  ${newUser}`)
       await newUser.save();
       res.status(201).json({
@@ -119,7 +119,8 @@ const updateUser = async (req, res) => {
 const userDetails = async (req, res) => {
   try {
     // const { userID } = req.body;
-    const { userID } = req.params;
+    const userID = req.params.id;
+    // const { userID } = req.params;
     console.log(userID);
     if (!userID) {
       return res.status(400).json({

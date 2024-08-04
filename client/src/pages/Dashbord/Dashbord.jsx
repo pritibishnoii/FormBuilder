@@ -3,9 +3,9 @@ import styles from './Dashbord.module.css';
 import { useEffect } from 'react';
 import { setFolders, loadForms } from '../../redux/Reducer/folderSlice';
 import DropdownMenu from '../../Components/DropdownMenu/DropdownMenu';
-import FolderCreate from '../../Components/FolderCreate/FolderCreate';
+import FolderCreate from '../../Components/Folder/Folder';
 import PopupBox from '../../Components/Popup/PopupBox';
-import FormCreate from '../../Components/FormCreate/FormCreate';
+import FormCreate from '../../Components/Form/Form';
 
 function Dashbord() {
     const folders = useSelector((state) => state.folder.folders);

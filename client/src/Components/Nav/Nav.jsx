@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useNavigate, useLocation, Link, useParams } from 'react-router-dom';
 import styles from './Nav.module.css';
 import closeIcon from '../../assets/closeIcon.png';

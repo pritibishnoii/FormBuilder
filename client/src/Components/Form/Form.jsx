@@ -1,4 +1,4 @@
-import styles from './FormCreate.module.css';
+import styles from './Form.module.css';
 import { FiPlus } from "react-icons/fi";
 import { setFormPopup, setDeleteFormPopup } from '../../redux/Reducer/folderSlice';
 import { useNavigate } from 'react-router-dom';

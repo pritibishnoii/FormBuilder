@@ -13,80 +13,61 @@ import phoneInputIcon from '../../assets/phone.png';
 import dateInputIcon from '../../assets/date.png';
 import ratingIcon from '../../assets/star.png';
 import buttonIcon from '../../assets/btnimg.png';
-import deleteIcon from '../../assets/deleteIcon.png'
+import deleteIcon from '../../assets/deleteIcon.png';
 
 import { useState } from 'react';
 
-
-
-// const bubbleButtons = [
-//   { id: 'bt', src: textImg, text: "Text" },
-//   { id: 'bi', src: imageIcon, text: "Image" },
-//   { id: 'bv', src: videoIcon, text: "Video" },
-//   { id: 'bg', src: gifIcon, text: "GIF" }
-// ];
-
-// const inputButtons = [
-//   { src: textInputIcon, text: "Text" },
-//   { src: numberInputIcon, text: "Number" },
-//   { src: emailInputIcon, text: "Email" },
-//   { src: phoneInputIcon, text: "Phone" },
-//   { src: dateInputIcon, text: "Date" },
-//   { src: ratingIcon, text: "Rating" },
-//   { src: buttonIcon, text: "Buttons" }
-// ];
-
 function Workspace() {
+  const [activePopups, setActivePopups] = useState([]);
+  const [popupInputs, setPopupInputs] = useState({}); // Store input for each popup
 
-  const [openBubbleButtons, setOpenBubbleButtons] = useState([])
-  const [openInputButtons, setOpenInputButtons] = useState(false)
-  const [error, setError] = useState(false)
-  const [bubbleInput, setBubbleInput] = useState('')
-  const [textInput, setTextInput] = useState('')
+  // Map popup types to their respective icons and labels
+  const popupConfig = {
+    bubbleText: { icon: textImg, label: 'Text' },
+    bubbleImage: { icon: imageIcon, label: 'Image' },
+    bubbleVideo: { icon: videoIcon, label: 'Video' },
+    bubbleGif: { icon: gifIcon, label: 'Gif' },
+    inputText: { icon: textInputIcon, label: 'Text' },
+    inputNumber: { icon: numberInputIcon, label: 'Number' },
+    inputEmail: { icon: emailInputIcon, label: 'Email' },
+    inputPhone: { icon: phoneInputIcon, label: 'Phone' },
+    inputDate: { icon: dateInputIcon, label: 'Date' },
+    inputRating: { icon: ratingIcon, label: 'Rating' },
+    inputButton: { icon: buttonIcon, label: 'Button' }
+  };
 
+  const handleOpenPopup = (popupType) => {
+    setActivePopups((prevPopups) => [...prevPopups, popupType]);
+    setPopupInputs((prevInputs) => ({
+      ...prevInputs,
+      [popupType]: ''
+    }));
+  };
 
+  const handleClosePopup = (popupType) => {
+    setActivePopups((prevPopups) => prevPopups.filter(popup => popup !== popupType));
+    setPopupInputs((prevInputs) => {
+      const newInputs = { ...prevInputs };
+      delete newInputs[popupType];
+      return newInputs;
+    });
+  };
 
-
-  const handleInput = (e) => {
+  const handleInputChange = (popupType, e) => {
     const { value } = e.target;
-    setBubbleInput(value);
-    if (value.trim() === '') {
-      setError(true);
-    } else {
-      setError(false);
-    }
-  };
-  const handelTextInput = (e) => {
-    const { value } = e.target
-    setTextInput(value)
-    if (value.trim() === '') {
-      setError(true);
-    } else {
-      setError(false);
-    }
-  }
-  const handelSave = () => {
-    if (bubbleInput.trim() === '' || textInput.trim() === '') {
-      setError(true);
-      setBubbleInput('');
-      setTextInput('')
-    }
-
-    else {
-      setError(false);
-      // Save logic here
-    }
-
+    setPopupInputs((prevInputs) => ({
+      ...prevInputs,
+      [popupType]: value
+    }));
   };
 
+  const handleSave = () => {
 
-  const handelBubbleButtons = (id) => {
-    setOpenBubbleButtons(true)
-  }
+  };
 
   return (
     <div className={styles.container}>
-      <Nav handelSave={handelSave} />
+      <Nav handelSave={handleSave} />
 
       <div className={styles.main}>
         <div className={`${styles.startImg} sans-font flex`}>
@@ -96,126 +77,120 @@ function Workspace() {
           <div className={styles.sectionContainer}>
             <h1 className={styles.headings}>Bubbles</h1>
             <div className={styles.Container}>
-              <button className={styles.box}
-                onClick={() => handelBubbleButtons()}>
+              <button
+                className={styles.box}
+                onClick={() => handleOpenPopup('bubbleText')}
+              >
                 <img src={textImg} alt="text" />
                 Text
               </button>
-              <button className={styles.box}
-                onClick={() => handelBubbleButtons()}>
-                <img src={textImg} alt="text" />
+              <button
+                className={styles.box}
+                onClick={() => handleOpenPopup('bubbleImage')}
+              >
+                <img src={imageIcon} alt="img" />
                 Image
               </button>
-              <button className={styles.box}
-                onClick={() => handelBubbleButtons()}>
-                <img src={videoIcon} alt="vedio" />
-                Vedio
+              <button
+                className={styles.box}
+                onClick={() => handleOpenPopup('bubbleVideo')}
+              >
+                <img src={videoIcon} alt="video" />
+                Video
               </button>
-              <button className={styles.box}
-                onClick={() => handelBubbleButtons()}>
-                <img src={gifIcon} alt="git" />
+              <button
+                className={styles.box}
+                onClick={() => handleOpenPopup('bubbleGif')}
+              >
+                <img src={gifIcon} alt="gif" />
                 Gif
               </button>
-
             </div>
           </div>
           <div className={styles.sectionContainer}>
             <h1 className={styles.headings}>Inputs</h1>
             <div className={styles.Container}>
-
-              <button className={styles.box}
-                onClick={() => setOpenInputButtons(true)}
+              <button
+                className={styles.box}
+                onClick={() => handleOpenPopup('inputText')}
               >
                 <img src={textInputIcon} alt="text" />
                 Text
               </button>
-              <button className={styles.box}
-                onClick={() => setOpenInputButtons(true)}
+              <button
+                className={styles.box}
+                onClick={() => handleOpenPopup('inputNumber')}
               >
                 <img src={numberInputIcon} alt="num" />
                 Number
               </button>
-              <button className={styles.box}
-                onClick={() => setOpenInputButtons(true)}
+              <button
+                className={styles.box}
+                onClick={() => handleOpenPopup('inputEmail')}
               >
                 <img src={emailInputIcon} alt="email" />
                 Email
               </button>
-              <button className={styles.box}
-                onClick={() => setOpenInputButtons(true)}
+              <button
+                className={styles.box}
+                onClick={() => handleOpenPopup('inputPhone')}
               >
                 <img src={phoneInputIcon} alt="phone" />
                 Phone
               </button>
-              <button className={styles.box}
-                onClick={() => setOpenInputButtons(true)}
+              <button
+                className={styles.box}
+                onClick={() => handleOpenPopup('inputDate')}
               >
                 <img src={dateInputIcon} alt="date" />
                 Date
               </button>
-              <button className={styles.box}
-                onClick={() => setOpenInputButtons(true)}
+              <button
+                className={styles.box}
+                onClick={() => handleOpenPopup('inputRating')}
               >
                 <img src={ratingIcon} alt="rating" />
                 Rating
               </button>
-              <button className={styles.box}
-                onClick={() => setOpenInputButtons(true)}
+              <button
+                className={styles.box}
+                onClick={() => handleOpenPopup('inputButton')}
               >
                 <img src={buttonIcon} alt="button" />
                 Button
               </button>
-
             </div>
           </div>
         </div>
 
-
-        {
-          openBubbleButtons && (
-            <div className={styles.bubblesBox}>
-              <img src={deleteIcon} alt="delimg" onClick={() => setOpenBubbleButtons(false)}
-                className={styles.delIcon}
-              />
-              <span className={styles.text}>Text</span>
-              <div className={`${styles.inputBox} ${error ? styles.error : ''} `}>
-                <img src={textImg} alt="" />
-                <input
-                  type="text"
-                  placeholder='Click here to edit'
-                  value={bubbleInput}
-                  onChange={handleInput}
+        {/* Render the popups */}
+        <div className={styles.popupsContainer}>
+          {activePopups.map((popupType, index) => {
+            const { icon, label } = popupConfig[popupType] || {};
+            return (
+              <div key={popupType} className={styles.bubblesBox} style={{ top: `${index * 120}px` }}>
+                <img
+                  src={deleteIcon}
+                  alt="delimg"
+                  onClick={() => handleClosePopup(popupType)}
+                  className={styles.delIcon}
                 />
-                <span className={error ? styles.errorText : styles.displayNone} > Required Field</span>
+                <span className={styles.text}>{label || 'Popup'}</span>
+                <div className={`${styles.inputBox}`}>
+                  <img src={icon} alt={label} />
+                  <input
+                    type="text"
+                    placeholder="Click here to edit"
+                    value={popupInputs[popupType] || ''}
+                    onChange={(e) => handleInputChange(popupType, e)}
+                  />
+                </div>
               </div>
-            </div>
-          )
-        }
-        {
-          openInputButtons && (
-            <div className={styles.bubblesBox}>
-              <img src={deleteIcon} alt="del" onClick={() => setOpenInputButtons(false)}
-                className={styles.delIcon}
-              />
-              <span className={styles.text}>Text</span>
-              <div className={`${styles.inputBox} ${error ? styles.error : ''} `}>
-                <img src={textImg} alt="" />
-                <input
-                  type="text"
-                  placeholder='Click here to edit'
-                  value={textInput}
-                  onChange={handelTextInput}
-                />
-                <span className={error ? styles.errorText : styles.displayNone} > Required Field</span>
-              </div>
-            </div>
-          )
-        }
-
-
-
+            );
+          })}
+        </div>
       </div>
-    </div >
+    </div>
   );
 }
 

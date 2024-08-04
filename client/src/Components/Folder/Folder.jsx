@@ -1,4 +1,4 @@
-import styles from './FolderCreate.module.css'
+import styles from './Folder.module.css'
 import { useDispatch, useSelector } from 'react-redux';
 import {
 
@@ -32,15 +32,15 @@ const FolderCreate = () => {
                 <div className={`${styles.folderList} `}>
                     {folders.map((folder, index) => (
                         <div key={index} className={`${styles.folderItem} sans-font text-white`}
-                        onClick={() => {
-                            dispatch(setFormPopup(true))
+                            onClick={() => {
+                                dispatch(setFormPopup(true))
 
-                        }}
-                        
+                            }}
+
                         >
                             <span style={{ marginLeft: '12px' }}
-                           
-                           >
+
+                            >
                                 {folder}
                                 <RiDeleteBin6Line style={{ marginLeft: '12px', color: 'red' }} onClick={(e) => {
                                     e.stopPropagation()
@@ -54,7 +54,7 @@ const FolderCreate = () => {
                 </div>
 
 
-              
+
 
             </div>
         </div>
