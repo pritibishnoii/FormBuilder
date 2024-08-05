@@ -5,7 +5,7 @@ import closeIcon from '../../assets/closeIcon.png';
 
 
 
-function Nav({ handelSave }) {
+function Nav({ handleSave, isShareEnabled, handleShare }) {
   const navigate = useNavigate();
   const location = useLocation();
   const { formId } = useParams();
@@ -42,9 +42,13 @@ function Nav({ handelSave }) {
           </Link>
         </div>
         <div className={`${styles.btns} flex items-center`}>
-          <button className={`${styles.shareBtn} text-white sans-font`} disabled >Share</button>
+          <button
+            className={`${styles.shareBtn} text-white sans-font  ${isShareEnabled ? styles.activeShareButton : ''}`}
+            disabled={!isShareEnabled}
+            onClick={handleShare}
+          >Share</button>
           <button className={`${styles.saveBtn} text-white sans-font`}
-            onClick={handelSave}
+            onClick={handleSave}
           >Save</button>
           <div onClick={() => navigate('/dashbord')}>
             <img src={closeIcon} alt="close" />

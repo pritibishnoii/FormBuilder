@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import styles from './Workspace.module.css';
 import Nav from '../../Components/Nav/Nav';
 
@@ -15,25 +16,26 @@ import ratingIcon from '../../assets/star.png';
 import buttonIcon from '../../assets/btnimg.png';
 import deleteIcon from '../../assets/deleteIcon.png';
 
-import { useState } from 'react';
-
 function Workspace() {
   const [activePopups, setActivePopups] = useState([]);
-  const [popupInputs, setPopupInputs] = useState({}); // Store input for each popup
+  const [popupInputs, setPopupInputs] = useState({});
+  const [savedData, setSavedData] = useState(null);
+  const [isShareEnabled, setIsShareEnabled] = useState(false);
+  const [inputErrors, setInputErrors] = useState({});
+  const [copyMessage, setCopyMessage] = useState('');
 
-  // Map popup types to their respective icons and labels
   const popupConfig = {
-    bubbleText: { icon: textImg, label: 'Text' },
-    bubbleImage: { icon: imageIcon, label: 'Image' },
-    bubbleVideo: { icon: videoIcon, label: 'Video' },
-    bubbleGif: { icon: gifIcon, label: 'Gif' },
-    inputText: { icon: textInputIcon, label: 'Text' },
-    inputNumber: { icon: numberInputIcon, label: 'Number' },
-    inputEmail: { icon: emailInputIcon, label: 'Email' },
-    inputPhone: { icon: phoneInputIcon, label: 'Phone' },
-    inputDate: { icon: dateInputIcon, label: 'Date' },
-    inputRating: { icon: ratingIcon, label: 'Rating' },
-    inputButton: { icon: buttonIcon, label: 'Button' }
+    bubbleText: { icon: textImg, label: 'Text', inputType: 'text' },
+    bubbleImage: { icon: imageIcon, label: 'Image', inputType: 'file' },
+    bubbleVideo: { icon: videoIcon, label: 'Video', inputType: 'file' },
+    bubbleGif: { icon: gifIcon, label: 'Gif', inputType: 'file' },
+    inputText: { icon: textInputIcon, label: 'Text', inputType: 'text' },
+    inputNumber: { icon: numberInputIcon, label: 'Number', inputType: 'number' },
+    inputEmail: { icon: emailInputIcon, label: 'Email', inputType: 'email' },
+    inputPhone: { icon: phoneInputIcon, label: 'Phone', inputType: 'tel' },
+    inputDate: { icon: dateInputIcon, label: 'Date', inputType: 'date' },
+    inputRating: { icon: ratingIcon, label: 'Rating', inputType: 'number' },
+    inputButton: { icon: buttonIcon, label: 'Button', inputType: 'text' }
   };
 
   const handleOpenPopup = (popupType) => {
@@ -51,24 +53,74 @@ function Workspace() {
       delete newInputs[popupType];
       return newInputs;
     });
+    setInputErrors((prevErrors) => {
+      const newErrors = { ...prevErrors };
+      delete newErrors[popupType];
+      return newErrors;
+    });
   };
 
   const handleInputChange = (popupType, e) => {
-    const { value } = e.target;
-    setPopupInputs((prevInputs) => ({
-      ...prevInputs,
-      [popupType]: value
+    const { type, value, files } = e.target;
+
+    setInputErrors((prevErrors) => ({
+      ...prevErrors,
+      [popupType]: false // Reset error on input change
     }));
+
+    if (type === 'file') {
+      setPopupInputs((prevInputs) => ({
+        ...prevInputs,
+        [popupType]: files[0]
+      }));
+    } else {
+      setPopupInputs((prevInputs) => ({
+        ...prevInputs,
+        [popupType]: value
+      }));
+    }
   };
 
   const handleSave = () => {
+    const filteredInputs = Object.fromEntries(
+      Object.entries(popupInputs).filter(([key, value]) => value)
+    );
 
+    if (Object.keys(filteredInputs).length > 0) {
+      setSavedData(filteredInputs);
+      setIsShareEnabled(true);
+      console.log(filteredInputs);
+    } else {
+      const errors = Object.fromEntries(
+        Object.entries(popupInputs).map(([key, value]) => [key, !value])
+      );
+      setInputErrors(errors);
+    }
+  };
+  const handleShare = () => {
+    if (isShareEnabled && savedData) {
+      const encodedData = encodeURIComponent(JSON.stringify(savedData));
+      const shareLink = `${window.location.origin}/share?data=${encodedData}`;
+      navigator.clipboard.writeText(shareLink)
+        .then(() => {
+          setCopyMessage(' ✔️ Link copied')
+          setTimeout(() => setCopyMessage(''), 4000); // Hide message after 3 seconds
+        }
+        )
+        .catch(() => setCopyMessage('failed to copy'));
+    }
   };
 
   return (
     <div className={styles.container}>
-      <Nav handelSave={handleSave} />
-
+      <Nav
+        handleSave={handleSave}
+        isShareEnabled={isShareEnabled}
+        handleShare={handleShare}
+      />
+      {
+        copyMessage && <div className={styles.copyMessage}>{copyMessage}</div>
+      }
       <div className={styles.main}>
         <div className={`${styles.startImg} sans-font flex`}>
           <img src={startIcon} alt="Start" /> Start
@@ -166,7 +218,9 @@ function Workspace() {
         {/* Render the popups */}
         <div className={styles.popupsContainer}>
           {activePopups.map((popupType, index) => {
-            const { icon, label } = popupConfig[popupType] || {};
+            const { icon, label, inputType } = popupConfig[popupType] || {};
+            const isError = inputErrors[popupType];
+
             return (
               <div key={popupType} className={styles.bubblesBox} style={{ top: `${index * 120}px` }}>
                 <img
@@ -176,14 +230,22 @@ function Workspace() {
                   className={styles.delIcon}
                 />
                 <span className={styles.text}>{label || 'Popup'}</span>
-                <div className={`${styles.inputBox}`}>
+                <div className={`${styles.inputBox} ${isError ? styles.errorBorder : ''}`}>
                   <img src={icon} alt={label} />
                   <input
-                    type="text"
+                    type={inputType}
                     placeholder="Click here to edit"
-                    value={popupInputs[popupType] || ''}
+                    value={inputType !== 'file' ? popupInputs[popupType] : undefined}
                     onChange={(e) => handleInputChange(popupType, e)}
+                    accept={inputType === 'file' ? `${popupType.includes('Image') ? 'image/*' : popupType.includes('Video') ? 'video/*' : popupType.includes('Gif') ? 'image/gif' : ''}` : undefined}
+                    className={isError ? styles.errorBorder : ''}
+
                   />
+                  {isError && <div className={styles.errorText}>This field is required</div>}
+                  {inputType === 'file' && popupInputs[popupType] && (
+                    <div className={styles.fileName}>{popupInputs[popupType].name}</div>
+                  )}
+
                 </div>
               </div>
             );
